@@ -1,4 +1,4 @@
-module grpc
+module fisher.com/grpc
 
 go 1.17
 

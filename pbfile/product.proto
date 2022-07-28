@@ -13,6 +13,15 @@ message ProductResponse{
 service ProdService{
 
     rpc GetProdStock(ProductRequest) returns(ProductResponse);
+    
+    //客户端流定义方法 不停的接收 接收完成后响应
+    rpc UpdateProdStockClientStream(stream ProductRequest) returns(ProductResponse);
 
+    //服务端流定义方法 接收后不停的响应
+    rpc GetProdStockServerStream(ProductRequest) returns(stream ProductResponse);
+
+    //双向流定义方法 接收后不停的响应
+    rpc GetProdStockDoubleStream(stream ProductRequest) returns(stream ProductResponse);
 }
 //protoc --go_out=plugins=grpc:./ ./product.proto
+//protoc --go_out=./service --go-grpc_out=./service pbfile/product.proto

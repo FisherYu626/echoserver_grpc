@@ -8,4 +8,3 @@ message User{
     optional string password = 3;
     repeated string address = 4;
 }
-
